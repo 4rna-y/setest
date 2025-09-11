@@ -9,7 +9,7 @@ export default defineConfig({
 	dbCredentials: {
 		ssl: false,
 		host: "db",
-		user: env.POSTGRES__USER,
+		user: env.POSTGRES_USER,
 		password: env.POSTGRES_PASSWORD,
 		port: env.DATABASE_PORT,
 		database: env.POSTGRES_DB,
