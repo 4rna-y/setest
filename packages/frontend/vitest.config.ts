@@ -1,15 +1,15 @@
-import { defineConfig } from 'vitest/config'
-import solidPlugin from 'vite-plugin-solid'
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from "@tailwindcss/vite";
+import solidPlugin from "vite-plugin-solid";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  plugins: [solidPlugin(), tailwindcss()],
-  test: {
-    environment: 'jsdom',
-    globals: true,
-    include: ['src/**/*.test.{ts,tsx}'],
-    testTransformMode: {
-      web: [ "/\.[jt]sx?$/" ],
-    },
-  },
-})
+	plugins: [solidPlugin(), tailwindcss()],
+	test: {
+		environment: "jsdom",
+		globals: true,
+		include: ["src/**/*.test.{ts,tsx}"],
+		testTransformMode: {
+			web: ["/.[jt]sx?$/"],
+		},
+	},
+});

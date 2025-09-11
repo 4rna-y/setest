@@ -1,33 +1,30 @@
 {
-    "name": "solid_elysia_test",
-    "dockerComposeFile": "../docker-compose.yml",
-    "service": "app",
-    "workspaceFolder": "/app",
-    "forwardPorts": [
-        
-        3000, 3001, 5432, 6379, 80, 5555, 6543
-    ],
+	"name": "solid_elysia_test",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/app",
+	"forwardPorts": [3000, 3001, 5432, 6379, 80, 5555, 6543],
 
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "oven.bun-vscode",
-                "ms-vscode.vscode-typescript-next",
-                "solid-js.solid-js-vscode",
-                "bradlc.vscode-tailwindcss",
-                "biomejs.biome",
-                "drizzle-team.drizzle-vscode",
-                "ms-azuretools.vscode-docker",
-                "42crunch.vscode-openapi",
-                "eamodio.gitlens",
-                "formulahendry.auto-rename-tag",
-                "usernamehw.errorlens",
-                "ms-vscode.vscode-json",
-                "ms-vscode.mono-debug"
-            ]
-        }
-    },
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"oven.bun-vscode",
+				"ms-vscode.vscode-typescript-next",
+				"solid-js.solid-js-vscode",
+				"bradlc.vscode-tailwindcss",
+				"biomejs.biome",
+				"drizzle-team.drizzle-vscode",
+				"ms-azuretools.vscode-docker",
+				"42crunch.vscode-openapi",
+				"eamodio.gitlens",
+				"formulahendry.auto-rename-tag",
+				"usernamehw.errorlens",
+				"ms-vscode.vscode-json",
+				"ms-vscode.mono-debug"
+			]
+		}
+	},
 
-    "remoteUser": "bun",
-    "shutdownAction": "stopCompose"
+	"remoteUser": "bun",
+	"shutdownAction": "stopCompose"
 }
