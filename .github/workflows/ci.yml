@@ -1,0 +1,71 @@
+name: CI
+on:
+    push:
+        branches: [main, develop, 'release/*']
+    pull_request: 
+        branches: [develop, main]
+    
+jobs:
+    setup:
+        runs-on: ubuntu-22.04
+        steps:
+            - uses: actions/checkout@v4
+            - uses: oven-sh/setup-bun@v2
+              with:
+                bun-version: latest
+            - name: install dependencies
+              run: bun install
+    ci:
+        runs-on: ubuntu-22.04
+
+        services:
+          postgres:
+            image: postgres:16-alpine
+            env:
+                POSTGRES_PASSWORD: postgres
+                POSTGRES_DB: test
+            options: >-
+                --health-cmd pg_isready
+                --health-interval 10s
+                --health-timeout 5s
+                --health-retries 5
+            ports:
+                - 5432:5432
+        
+        env:
+            DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test
+
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+
+            - name: setup bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                bun-version: latest
+            
+            - name: cache dependencies
+              uses: actions/cache@v4
+              with:
+                path: ~/.bun/install/cache
+                key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
+                restore-keys: |
+                    ${{ runner.os }}-bun-
+
+            - name: install dependencies
+              run: bun install
+            
+            - name: lint
+              run: bun run lint
+
+            - name: type check
+              run: bun run typecheck
+            
+            - name: build
+              run: bun run build
+            
+            - name: test frontend
+              run: bun run --filter="@setest/frontend" test
+
+            - name: test backend
+              run: bun run --filter="@setest/backend" test
