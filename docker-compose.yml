@@ -15,7 +15,6 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    container_name: setest
     working_dir: /app
     volumes:
       - .:/app
@@ -44,7 +43,6 @@ services:
 
   db:
     image: postgres:16-alpine
-    container_name: setest-db
     env_file:
       - .env.local
     volumes:
@@ -64,7 +62,6 @@ services:
 
   nginx:
     image: nginx:alpine
-    container_name: setest-nginx
     ports:
       - "80:80"
       - "443:443"
@@ -79,7 +76,6 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: setest-redis
     ports:
       - "6379:6379"
     volumes:
@@ -98,7 +94,6 @@ services:
     
   adminer:
     image: adminer:latest
-    container_name: setest-adminer
     ports:
       - "6543:6543"
     depends_on:
