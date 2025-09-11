@@ -20,7 +20,9 @@
 				"formulahendry.auto-rename-tag",
 				"usernamehw.errorlens",
 				"ms-vscode.vscode-json",
-				"ms-vscode.mono-debug"
+				"ms-vscode.mono-debug",
+				"github.vscode-pull-request-github",
+				"github.vscode-github-actions"
 			]
 		}
 	},
