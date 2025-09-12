@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "module": "preserve",
+        "moduleResolution": "bundler",
+        "outDir": "./dist",
+        "declaration": true,
+        "declarationMap": true
+    }
+}

@@ -1,2 +1,2 @@
-export * from "./common.ts";
-export * from "./user.ts";
+export * from "./common";
+export * from "./user";
