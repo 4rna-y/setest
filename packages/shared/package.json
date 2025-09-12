@@ -6,6 +6,9 @@
 		"./requests": "./dist/requests/index.d.ts",
 		"./responses": "./dist/responses/index.d.ts"
 	},
+	"scripts": {
+		"build": "tsc"
+	},
 	"dependencies": {
 		"zod": "^4.1.5"
 	},
