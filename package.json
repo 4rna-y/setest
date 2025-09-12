@@ -17,6 +17,9 @@
 		"typescript": "^5.9.2",
 		"@types/bun": "latest"
 	},
+	"dependencies": {
+		"@shared": "file:./shared"
+	},
 	"module": "index.ts",
 	"type": "module"
 }
