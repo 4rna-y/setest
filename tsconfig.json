@@ -30,7 +30,5 @@
 		"paths": {
 			"@setest/shared/*": ["packages/shared/*"]
 		}
-
-
 	}
 }

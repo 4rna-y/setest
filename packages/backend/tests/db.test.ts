@@ -5,12 +5,15 @@ import { UserRepository } from "../src/user/userRepository";
 const userRepository = new UserRepository();
 
 describe("Database", () => {
-    test("connection", () => {
-        expect(driver).toBeDefined();
-    });
+	test("connection", () => {
+		expect(driver).toBeDefined();
+	});
 
-    test("insert user", async () => {
-        const res = await userRepository.create({ name: "wawawa", password: "mgmgmg" });
-        expect(res.statusCode).toBe(200);
-    });
+	test("insert user", async () => {
+		const res = await userRepository.create({
+			name: "wawawa",
+			password: "mgmgmg",
+		});
+		expect(res.statusCode).toBe(200);
+	});
 });

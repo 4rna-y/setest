@@ -13,7 +13,9 @@ export const users = pgTable("users", {
 
 export const userCredentials = pgTable("user_credentials", {
 	id: uuid("id").notNull().primaryKey(),
-	userId: uuid("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+	userId: uuid("user_id")
+		.notNull()
+		.references(() => users.id, { onDelete: "cascade" }),
 	passwordHash: text("password_hash").notNull(),
 	createdAt: timestamp("created_at").notNull().defaultNow(),
 	updatedAt: timestamp("updated_at").notNull().defaultNow(),
