@@ -21,9 +21,6 @@ jobs:
         services:
           postgres:
             image: postgres:16-alpine
-            env:
-                POSTGRES_PASSWORD: postgres
-                POSTGRES_DB: test
             options: >-
                 --health-cmd pg_isready
                 --health-interval 10s
@@ -34,6 +31,10 @@ jobs:
         
         env:
             DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: test
+            POSTGRES_USER: postgres
+            JWT_SECRET: 2Ys7KLD2FdaKnSF6
 
         steps:
             - name: checkout code
