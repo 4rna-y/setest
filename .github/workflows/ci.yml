@@ -18,6 +18,12 @@ jobs:
     ci:
         runs-on: ubuntu-22.04
 
+        env:
+            DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: test
+            POSTGRES_USER: postgres
+            JWT_SECRET: 2Ys7KLD2FdaKnSF6
         services:
           postgres:
             image: postgres:16-alpine
@@ -28,13 +34,6 @@ jobs:
                 --health-retries 5
             ports:
                 - 5432:5432
-        
-        env:
-            DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test
-            POSTGRES_PASSWORD: postgres
-            POSTGRES_DB: test
-            POSTGRES_USER: postgres
-            JWT_SECRET: 2Ys7KLD2FdaKnSF6
 
         steps:
             - name: checkout code
