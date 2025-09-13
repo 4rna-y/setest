@@ -6,7 +6,7 @@ import { pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
 	id: uuid("id").notNull().primaryKey(),
-	name: text("name").notNull(),
+	name: text("name").notNull().unique(),
 	createdAt: timestamp("created_at").notNull().defaultNow(),
 	updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
@@ -17,7 +17,6 @@ export const userCredentials = pgTable("user_credentials", {
 		.notNull()
 		.references(() => users.id, { onDelete: "cascade" }),
 	passwordHash: text("password_hash").notNull(),
-	salt: text("salt").notNull(),
 	createdAt: timestamp("created_at").notNull().defaultNow(),
 	updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

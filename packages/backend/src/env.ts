@@ -11,6 +11,7 @@ export const env = createEnv({
 			.default("development"),
 
 		DATABASE_URL: z.url(),
+		POSTGRES_HOST: z.string(),
 		POSTGRES_USER: z.string(),
 		POSTGRES_PASSWORD: z.string(),
 		POSTGRES_DB: z.string(),

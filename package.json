@@ -6,7 +6,7 @@
 	],
 	"scripts": {
 		"dev": "bun run --filter='*' dev",
-		"build": "bun run --filter='*' build",
+		"build": "cd packages/shared && bun run build && cd ../.. && bun run --filter='*' build",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
 		"format": "biome format --write .",

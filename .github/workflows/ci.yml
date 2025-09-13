@@ -18,12 +18,23 @@ jobs:
     ci:
         runs-on: ubuntu-22.04
 
+        env:
+            DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test
+            POSTGRES_HOST: localhost
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: test
+            POSTGRES_USER: postgres
+            JWT_SECRET: 2Ys7KLD2FdaKnSF6
         services:
           postgres:
             image: postgres:16-alpine
             env:
-                POSTGRES_PASSWORD: postgres
-                POSTGRES_DB: test
+              DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test
+              POSTGRES_HOST: localhost
+              POSTGRES_PASSWORD: postgres
+              POSTGRES_DB: test
+              POSTGRES_USER: postgres
+              JWT_SECRET: 2Ys7KLD2FdaKnSF6
             options: >-
                 --health-cmd pg_isready
                 --health-interval 10s
@@ -31,9 +42,6 @@ jobs:
                 --health-retries 5
             ports:
                 - 5432:5432
-        
-        env:
-            DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test
 
         steps:
             - name: checkout code
@@ -63,6 +71,9 @@ jobs:
             
             - name: build
               run: bun run build
+            
+            - name: drizzle push
+              run: cd packages/backend && bun run db:generate && bun run db:migrate && cd ../..
             
             - name: test frontend
               run: bun run --filter="@setest/frontend" test
