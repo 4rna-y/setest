@@ -70,6 +70,9 @@ jobs:
             - name: build
               run: bun run build
             
+            - name: drizzle push
+              run: bun run db:generate && bun run db:migrate
+            
             - name: test frontend
               run: bun run --filter="@setest/frontend" test
 
