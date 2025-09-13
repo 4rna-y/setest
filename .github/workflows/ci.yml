@@ -71,7 +71,7 @@ jobs:
               run: bun run build
             
             - name: drizzle push
-              run: cd /app && bun run db:generate && bun run db:migrate
+              run: cd packages/backend && bun run db:generate && bun run db:migrate && cd ../..
             
             - name: test frontend
               run: bun run --filter="@setest/frontend" test
