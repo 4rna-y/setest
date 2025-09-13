@@ -27,6 +27,12 @@ jobs:
         services:
           postgres:
             image: postgres:16-alpine
+            env:
+              DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test
+              POSTGRES_PASSWORD: postgres
+              POSTGRES_DB: test
+              POSTGRES_USER: postgres
+              JWT_SECRET: 2Ys7KLD2FdaKnSF6
             options: >-
                 --health-cmd pg_isready
                 --health-interval 10s
