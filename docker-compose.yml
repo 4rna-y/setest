@@ -33,13 +33,6 @@ services:
     networks:
       - dev-net
     restart: unless-stopped
-    develop:
-      watch:
-        - action: sync
-          path: ./packages
-          target: /app/packages
-        - action: rebuild
-          path: ./package.json
 
   db:
     image: postgres:16-alpine
@@ -73,32 +66,3 @@ services:
     networks:
       - dev-net
     restart: unless-stopped
-
-  redis:
-    image: redis:7-alpine
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-      - ./infrastructures/redis/redis.conf:/usr/local/redis/redis.conf
-    command: sh -c "redis-server /usr/local/redis/redis.conf"
-    networks:
-      - dev-net
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
-    
-  adminer:
-    image: adminer:latest
-    ports:
-      - "6543:6543"
-    depends_on:
-      - db
-    networks:
-      - dev-net
-    restart: unless-stopped
-
