@@ -6,7 +6,6 @@ networks:
 
 volumes:
   postgres_data:
-  redis_data:
   node_modules:
   bun_cache:
 
@@ -27,8 +26,6 @@ services:
       - .env.local
     depends_on:
       db:
-        condition: service_healthy
-      redis:
         condition: service_healthy
     networks:
       - dev-net
